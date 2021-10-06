@@ -1,0 +1,54 @@
+https://git-scm.com/download/win
+
+git clone https://github.com/mhasan029/DevOpsTraining.git
+cd DevOpsTraining/
+git add .
+git config --global user.email "mhasan.sust@gmail.com"
+git commit -m "document will be added"
+git push origin main
+==================================
+git clone https://github.com/mhasan029/DevOpsTraining.git   //pull folder from github
+cd DevOpsTraining/   
+git add .  
+git config --global user.email "mhasan.sust@gmail.com"
+git commit -m "document will be added"
+git push origin main
+
+git branch  /to view current branch location
+git branch mehedib001  //to add new branch
+git checkout mehedib001 //Switched to branch 'mehedib001'
+create new file newFile1 //from laptop
+git add .
+git commit -m "file moved to new branch"
+git push origin mehedib001
+
+main branch -> all updated code to main branch
+all developers create individual branch
+
+compare & pull request -> create pull request -> merge pull  //move changes file from mehedib001 branh to main branch
+
+git branch
+git checkout main //switch to main branch
+git pull  //pull all the changes from github to pc
+
+web ->settings -> manage access -> add people -> add email id
+
+//from mehedi PC
+git clone -b Saiful001 https://github.com/msi007/DevOpsTraining.git
+cd DevOpsTraining/
+git add .
+git commit -m "input from mehedi"
+git push origin Saiful001
+
+//from saiful github web
+create pull request : pull data from Saiful001 branch to Main branch
+
+//from saiful github web to saiful PC
+git branch
+git checkout main//switch to main branch
+git pull  //pull all the changes from github to pc
+git status
+============================
+git reset //to move back previous commit
+copy 8 changes file among 9 by pull request
+

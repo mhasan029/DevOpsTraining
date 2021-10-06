@@ -1,0 +1,46 @@
+link : https://www.jenkins.io/doc/book/installing/linux/
+
+step-1 : repo configure
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+step-2: import jenkins io
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+step-3: yum upgrade
+sudo yum upgrade
+
+stpe-4: java install
+sudo yum install epel-release java-11-openjdk-devel
+
+step-5: jenkins install
+sudo yum install jenkins
+sudo systemctl daemon-reload
+systemctl start jenkins
+systemctl status jenkins
+systemctl enable jenkins
+
+If everything has been set up correctly, you should see an output like this:
+
+Loaded: loaded (/etc/rc.d/init.d/jenkins; generated)
+Active: active (running) since Tue 2018-11-13 16:19:01 +03; 4min 57s ago
+
+step-6: stop firewall
+iptables -F
+iptables-save > /etc/sysconfig/iptables
+check in browser : http://192.168.56.102:8080 or http://localhost:8080
+
+step-7 : in which port jenkins listen:
+sudo lsof -i -P -n | grep LISTEN
+
+
+step-8 (optional): to check ipv6 enable or not
+/sbin/sysctl net.ipv6.bindv6only
+ get an output with value net.ipv6.bindv6only = 1 (means ipv6 enable)
+disable the settings : sudo /sbin/sysctl net.ipv6.bindv6only=0
+restart jenkins
+sudo systemctl restart jenkins
+
+If this worked for you, you should put this in a sysctl config-file. Because this is not a persistent fix. After a reboot the setting you just have modified will be defaulted to 1 again.
+
+Check /etc/sysctl.conf and /etc/sysctl.d/* and add net.ipv6.bindv6only = 0 in order to make this setting permanent and run sudo sysctl -p or restart after changing it.
